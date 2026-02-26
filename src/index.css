@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+* {
+   margin: 0px;
+   padding: 0px;
+   box-sizing: border-box;
+}
+
+body{
+   
+  font-family: "Poppins", sans-serif;
+  background-color: #cdcdcc;
+}
+
+.container {
+   width: 70%;
+   margin: 0px auto;
+}
+
+a{
+   text-decoration: none;
+   display: inline-block;
+}
+
+header {
+   padding: 20px 0px;
+   text-align: center;
+   margin-bottom: 30px;
+}
+
+header > div > div{
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+
+header a{
+   color: #ffff;
+}
+
+.card{
+   background-color: #ffffff;
+   color: black;
+   width: 70%;
+   margin: 0px auto;
+   padding: 50px;
+   border-radius: 20px;
+   margin-bottom: 20px;
+   position: relative;
+}
+
+.card.reverse{
+   background-color: black;
+   color: #ffff;
+}
+
+.delete{
+   position: absolute;
+   top: 15px;
+   right: 20px;
+   cursor: pointer;
+}
+
+.edit{
+   position: absolute;
+   top: 15px;
+   right: 50px;
+   cursor: pointer;
+}
+
+button{
+   background-color: transparent;
+   border: none;
+}
+
+form{
+   text-align: center;
+}
+
+.input-group{
+   display: flex;
+   gap: 10px;
+   margin-top: 30px;
+}
+
+.input-group > input{
+   width: 100%;
+   padding: 15px 10px;
+   border-radius: 15px;
+   border: none;
+   border: 1px solid grey;
+}
+.btn{
+   background-color: blue;
+   color: white;
+   padding: 15px 50px;
+   border-radius: 15px;
+}
+
+.btn-primary{
+   background-color: blue;
+}
+
+.btn-secondary{
+   background-color: orange;
+}
+
+.btn-danger{
+   background-color: red;
+}
+
+.btn:disabled{
+   background-color: grey;
+   cursor: not-allowed;
+}
+
+
+.error{
+   color: red;
+}
+
+.length{
+   margin-bottom: 20px;
+}
+
+.about :where(h1,p,a){
+   margin-bottom: 30px;
+}
