@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Card from './shared/Card'
 import Button from './shared/Button';
-import { useContext , useEffect} from 'react';
+import { useContext, useEffect } from 'react';
 import FeedbackContext from './context/FeedbackContext';
 
 
@@ -11,7 +11,7 @@ import FeedbackContext from './context/FeedbackContext';
 
 const Feedbackform = () => {
 
-    const {addFeedback, feedbackEdit, updateFeedback} = useContext(FeedbackContext);
+    const { addFeedback, feedbackEdit, updateFeedback } = useContext(FeedbackContext);
 
     const [text, setText] = useState("");
     const [btnDisable, setBtnDisable] = useState(true);
@@ -19,20 +19,20 @@ const Feedbackform = () => {
 
     useEffect(() => {
 
-        if(feedbackEdit.edit === true){
+        if (feedbackEdit.edit === true) {
             setBtnDisable(false);
-            setText(feedbackEdit.item.title);
+            setText(feedbackEdit.item.text || feedbackEdit.item.title || "");
         }
-    },[feedbackEdit]); 
+    }, [feedbackEdit]);
 
     const handleTextChange = (e) => {
-        if(text === ""){
+        if (text === "") {
             setBtnDisable(true);
             setMessage(null);
-        }else if(text !== "" && text.trim().length <= 10){
+        } else if (text !== "" && text.trim().length <= 10) {
             setBtnDisable(true);
             setMessage("text must be at least 10 characters");
-        }else {
+        } else {
             setMessage(null);
             setBtnDisable(false);
         }
@@ -41,21 +41,21 @@ const Feedbackform = () => {
 
 
 
-    const handleSubmit = (e) =>{
+    const handleSubmit = (e) => {
 
         e.preventDefault();
 
-        if(text.trim().length > 10){
+        if (text.trim().length > 10) {
             const newFeedback = {
-                text:text
+                text: text
             }
 
-            if(feedbackEdit.edit = true){
+            if (feedbackEdit.edit === true) {
                 updateFeedback(feedbackEdit.item.id, newFeedback);
-            }else{
+            } else {
                 addFeedback(newFeedback);
             }
-            
+
 
             // addFeedback(newFeedback);
 
@@ -64,24 +64,24 @@ const Feedbackform = () => {
             setText("");
         }
     }
-    
-  
 
-  return (
-    <div>
-        <Card>
-            <form onSubmit={handleSubmit}>
-                <h4>Add your reviews</h4>
 
-                <div className="input-group">
-                <input value={text} onChange={handleTextChange} type="text" placeholder='review' />
-                    <Button isDisabled={btnDisable}>send</Button>
-                </div>
-                {message && <p className='error'>{message}</p>}
-            </form>
-        </Card>
-    </div>
-  )
+
+    return (
+        <div>
+            <Card>
+                <form onSubmit={handleSubmit}>
+                    <h4>Add your reviews</h4>
+
+                    <div className="input-group">
+                        <input value={text} onChange={handleTextChange} type="text" placeholder='review' />
+                        <Button isDisabled={btnDisable}>send</Button>
+                    </div>
+                    {message && <p className='error'>{message}</p>}
+                </form>
+            </Card>
+        </div>
+    )
 }
 
 export default Feedbackform;
