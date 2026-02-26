@@ -1,21 +1,21 @@
-import { useState } from "react";
-import "./index.css";
+import { createContext, useState } from "react";
 
-function App() {
+const ThemeContext = createContext();
+
+export const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState("light");
 
   const toggleTheme = () => {
-    setTheme(theme === "light" ? "dark" : "light");
+    setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
   };
 
   return (
-    <div className={theme}>
-      <h1>Vite React Theme Change</h1>
-      <button onClick={toggleTheme}>
-        Change Theme
-      </button>
-    </div>
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+      <div className={`app-container ${theme}`}>
+        {children}
+      </div>
+    </ThemeContext.Provider>
   );
-}
+};
 
-export default App;
+export default ThemeContext;

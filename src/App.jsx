@@ -6,8 +6,9 @@ import { FeedbackProvider } from './components/context/FeedbackContext';
 import FeedbackList from "./components/FeedbackList";
 import Feedbacklength from "./components/Feedbacklength";
 import Feedbackform from "./components/Feedbackform";
-import { BrowserRouter,Routes,Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import About from "./components/About";
+import { ThemeProvider } from "./components/context/Feedbacktheme";
 
 
 
@@ -15,29 +16,31 @@ import About from "./components/About";
 const App = () => {
 
 
-  
+
   return (
-    <BrowserRouter>
-    <FeedbackProvider>
-      <Header text= "Review App" bgColor= "blue" textColor= "white"/>
-      <div className="container">
-       <Routes>
-         <Route path="/" element={
-          <>
-          <Feedbackform/>
+    <ThemeProvider>
+      <BrowserRouter>
+        <FeedbackProvider>
+          <Header text="Review App" bgColor="blue" textColor="white" />
+          <div className="container">
+            <Routes>
+              <Route path="/" element={
+                <>
+                  <Feedbackform />
 
-         <Feedbacklength/>
+                  <Feedbacklength />
 
-         <FeedbackList/>
-         
-          </>
-         }/>
+                  <FeedbackList />
 
-         <Route path="/about" element={<About/>}/>
-       </Routes>
-    </div>
-    </FeedbackProvider>
-    </BrowserRouter>
+                </>
+              } />
+
+              <Route path="/about" element={<About />} />
+            </Routes>
+          </div>
+        </FeedbackProvider>
+      </BrowserRouter>
+    </ThemeProvider>
   )
 }
 
