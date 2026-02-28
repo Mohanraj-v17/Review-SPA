@@ -12,7 +12,7 @@ export const FeedbackProvider = ({ children }) => {
 
 
   const fetchFeedback = async () => {
-    const response = await axios.get("http://localhost:5000/posts");
+    const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/posts`);
     setFeedback(response.data);
   };
 
@@ -23,7 +23,7 @@ export const FeedbackProvider = ({ children }) => {
 
 
   const addFeedback = async (newFeedback) => {
-    const response = await axios.post("http://localhost:5000/posts", newFeedback);
+    const response = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/posts`, newFeedback);
     setFeedback([response.data, ...feedback]);
   };
 
@@ -37,7 +37,7 @@ export const FeedbackProvider = ({ children }) => {
 
 
   const updateFeedback = async (id, updItem) => {
-    const response = await axios.put(`http://localhost:5000/posts/${id}`, updItem)
+    const response = await axios.put(`${import.meta.env.VITE_API_BASE_URL}/posts/${id}`, updItem)
     setFeedback(
       feedback.map((item) => (item.id === id ? { ...item, ...response.data } : item))
     )
@@ -47,7 +47,7 @@ export const FeedbackProvider = ({ children }) => {
 
   const deleteFeedback = async (id) => {
     if (window.confirm("Are you sure?")) {
-      await axios.delete(`http://localhost:5000/posts/${id}`);
+      await axios.delete(`${import.meta.env.VITE_API_BASE_URL}/posts/${id}`);
       setFeedback(feedback.filter((item) => item.id !== id));
     }
   };
