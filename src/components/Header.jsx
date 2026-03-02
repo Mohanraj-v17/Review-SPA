@@ -16,13 +16,13 @@ const Header = ({ text, bgColor, textColor }) => {
   return (
     <header style={headerStyle}>
       <div className="container">
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <div className="header-content">
           <Link to="/">
             <h2>{text}</h2>
           </Link>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+          <div className="header-nav">
             <Link to="/about">About us</Link>
-            <button onClick={toggleTheme} style={{ color: theme === 'dark' ? '#fff' : textColor, cursor: 'pointer', fontSize: '20px' }}>
+            <button onClick={toggleTheme} className="theme-toggle">
               {theme === 'light' ? <FaMoon /> : <FaSun />}
             </button>
           </div>

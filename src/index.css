@@ -27,7 +27,8 @@ body {
 }
 
 .container {
-   width: 70%;
+   width: 90%;
+   max-width: 768px;
    margin: 0px auto;
 }
 
@@ -52,16 +53,46 @@ header a {
    color: #ffff;
 }
 
+.header-content {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+
+.header-nav {
+   display: flex;
+   align-items: center;
+   gap: 20px;
+}
+
+.theme-toggle {
+   cursor: pointer;
+   font-size: 20px;
+}
+
+@media (max-width: 480px) {
+   .header-content {
+      flex-direction: column;
+      gap: 10px;
+   }
+}
+
 .card {
    background-color: #ffffff;
    color: black;
-   width: 70%;
+   width: 100%;
    margin: 0px auto;
    padding: 50px;
    border-radius: 20px;
    margin-bottom: 20px;
    position: relative;
    transition: all 0.3s ease;
+}
+
+@media (max-width: 600px) {
+   .card {
+      padding: 30px 20px;
+   }
 }
 
 .app-container.dark .card {
@@ -102,6 +133,20 @@ form {
    display: flex;
    gap: 10px;
    margin-top: 30px;
+}
+
+@media (max-width: 600px) {
+   .input-group {
+      flex-direction: column;
+   }
+
+   .input-group>button {
+      width: 100%;
+   }
+
+   header h2 {
+      font-size: 1.5rem;
+   }
 }
 
 .input-group>input {
